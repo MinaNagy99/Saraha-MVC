@@ -1,0 +1,24 @@
+<%- include('./shared/navbar.ejs') %>
+
+
+<div class="container text-center my-5">
+    <div class="user my-3">
+        <i class="fas fa-user-secret user-icon"></i>
+        <h4 class="login">Login</h4>
+    </div>
+    <div class="card p-5 w-50 m-auto">
+        <form method="POST" action="/handleLogin">
+            <input class="form-control" placeholder="Enter your email" type="text" name="email">
+            <input class="form-control my-4 " placeholder="Enter your Password" type="password" name="password">
+            <button class="btn btn-default-outline my-4 w-100 rounded">Login</button>
+            <p><a class="text-muted forgot btn" href="">I Forgot My Password</a></p>
+            <a class="btn btn-default-outline" href="/register">Register</a>
+        </form>
+        <% if (error) { %>
+         <% for( let index = 0; index < error.length; index++ ) { %>
+         <p class="alert alert-danger my-2"><%= error[index].message %></p>
+         <% } %>
+        <% } %>
+    </div>
+</div>
+<%- include('./shared/footer.ejs') %>

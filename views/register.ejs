@@ -1,0 +1,37 @@
+<%- include('./shared/navbar.ejs') %>
+
+<div class="container text-center my-5">
+    <div class="user my-3">
+        <i class="far fa-edit user-icon"></i>
+        <h4 class="login">Register</h4>
+    </div>
+    <div class="card p-5 w-50 m-auto">
+        <form method="POST" action="/handleRegister">
+            <input class="form-control" placeholder="Enter your Name" type="text" name="name">
+         
+          
+
+            <input class="form-control my-2 " placeholder="Enter your email" type="email" name="email">
+      
+
+            <input class="form-control  " placeholder="Enter your Password" type="password" name="password">
+          
+
+            <input class="form-control  my-2" placeholder="Password Confirmation" type="password" name="PasswordConfirmation">
+            <button class="btn btn-default-outline my-4 w-100 rounded">Register</button>
+            <a class="btn btn-default-outline" href="/login">Login</a>
+        </form>
+            <% if (error) { %>
+             <% for( let index = 0; index < error.length; index++ ) { %>
+        <p class="alert alert-danger my-3"><%= error[index].message %></p>
+             
+             <% } %>
+            <% } %>
+            <% if (isExisted=='email already existed') { %>
+       <p class="alert alert-danger my-3">email already existed</p>
+             <% console.log(isExisted); %>
+            <% } %>
+   
+    </div>
+</div>
+<%- include('./shared/footer.ejs') %>
